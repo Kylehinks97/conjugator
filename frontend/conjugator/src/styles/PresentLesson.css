@@ -13,20 +13,26 @@
 }
 
 * {
-    background-color: var(--grey);
-    color: var(--white)
+  background-color: var(--grey);
+  color: var(--white);
+}
+
+.container {
+  width: 80%;
+}
+
+.button-wrapper {
+ 
+  width: 100%;
+  justify-content: space-around;
 }
 
 .option-button {
   border-radius: 5em;
   padding: 0.2em 1em 0.2em 1em;
   margin: 0em 1em;
-  color: var(--grey);
+  color: var(--white);
   font-weight: bolder;
-  letter-spacing: .5px;
+  letter-spacing: .1em;
   font-size: larger;
-  background: var(--white);
 }
-
-/* Your custom styles */
-/* ... */
