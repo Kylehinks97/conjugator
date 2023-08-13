@@ -3,6 +3,30 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
+:root {
+  --grey: #2d2d2d;
+  --white: #fff8f0;
+  --green: #31b404;
+  --blue: #06aed5;
+  --red: #dd1c1a;
+  /* Define more colors as needed */
+}
+
+* {
+    background-color: var(--grey);
+    color: var(--white)
+}
+
+.option-button {
+  border-radius: 5em;
+  padding: 0.2em 1em 0.2em 1em;
+  margin: 0em 1em;
+  color: var(--grey);
+  font-weight: bolder;
+  letter-spacing: .5px;
+  font-size: larger;
+  background: var(--white);
+}
+
 /* Your custom styles */
 /* ... */
-

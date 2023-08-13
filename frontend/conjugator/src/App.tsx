@@ -7,6 +7,7 @@ function App() {
   const [newLessonLaunched, setNewLessonLaunched] = useState<boolean | null>(
     null
   );
+  const [selected, setSelected] = useState<string | null>(null);
   const isInitialRender = useRef(true);
 
   useEffect(() => {
@@ -17,13 +18,23 @@ function App() {
 
     if (newLessonLaunched) {
       newLesson().then((result: any) => {
-        setKatas(result.data);
+        const lessonData = result.data.map((kata: any) => {
+          const choices = [
+            ...`${kata.conjugated_form}, ${kata.options}`.split(", "),
+          ].sort(() => Math.random() - 0.5);
+          return { ...kata, choices };
+        });
+        setKatas(lessonData);
       });
     }
   }, [newLessonLaunched]);
 
-  console.log(katas, "<--");
-  console.log(newLessonLaunched);
+  function handleButtonClick(chosen: any, correct: any) {
+    chosen === correct ? console.log("correct") : console.log("wrong");
+    setSelected(chosen);
+  }
+
+  console.log(selected);
 
   return (
     <>
@@ -33,14 +44,30 @@ function App() {
       </div>
       {newLessonLaunched &&
         katas.length > 0 &&
-        katas.map((kata: any, idx: any) => {
-          return (
-            <div>
-              <p key={idx}>{kata.kata}<br /><br />{kata.conjugated_form}</p>
+        katas.map((kata: any, idx: any) => (
+          <>
+            <div key={idx}>
+              <p>
+                {kata.kata}
+                <br />
+                <br />
+              </p>
+              <div className="flex justify-center">
+                {kata.choices.map((choice: string, choiceIdx: number) => (
+                  <button
+                    key={choiceIdx}
+                    onClick={() =>
+                      handleButtonClick(choice, kata.conjugated_form)
+                    }
+                    className="option-button"
+                  >
+                    {choice}
+                  </button>
+                ))}
+              </div>
             </div>
-             
-          );
-        })}
+          </>
+        ))}
     </>
   );
 }
