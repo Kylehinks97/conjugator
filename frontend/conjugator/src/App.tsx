@@ -1,5 +1,5 @@
 import "./styles/App.css";
-import newLesson from "./fetchers.ts";
+import newLesson from "./fetchers";
 import { useEffect, useState, useRef } from "react";
 
 function App() {
@@ -31,9 +31,16 @@ function App() {
         <h1 className="text-xl font-bold text-blue-500">conjugator</h1>
         <button onClick={() => setNewLessonLaunched(true)}>New Lesson</button>
       </div>
-      {newLessonLaunched && katas.length > 0 && katas.map((kata: any, idx: any) => {
-        return <p key={idx}>{kata.kata}</p>;
-      })}
+      {newLessonLaunched &&
+        katas.length > 0 &&
+        katas.map((kata: any, idx: any) => {
+          return (
+            <div>
+              <p key={idx}>{kata.kata}<br /><br />{kata.conjugated_form}</p>
+            </div>
+             
+          );
+        })}
     </>
   );
 }
