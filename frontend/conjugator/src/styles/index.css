@@ -1,0 +1,13 @@
+/* src/styles/App.css */
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+* {
+  font-family: Libre Franklin;
+  margin: 0;
+  padding: 0
+}
+
+/* Your custom styles */
+/* ... */
