@@ -41,9 +41,9 @@ function PresentLesson() {
       ]);
     });
   }
-  
-  // console.log(correctSentences, "correctSentences");
- console.log(translations, "translations");
+
+  console.log(katas, "correctSentences");
+  console.log(translations, "translations");
 
   useEffect(() => {
     if (isInitialRender.current) {
@@ -59,8 +59,9 @@ function PresentLesson() {
             kata.conjugated_form,
           ]);
           setTranslations((prevTranslations) => [
-            ...prevTranslations, kata.translation
-          ])
+            ...prevTranslations,
+            kata.translation,
+          ]);
           const choices = [
             ...`${kata.conjugated_form}, ${kata.options}`.split(", "),
           ].sort(() => Math.random() - 0.5);
@@ -101,7 +102,6 @@ function PresentLesson() {
     setReadyToContinue(true);
     setShowIncorrectMessage(true);
   }
-
 
   return (
     <>
@@ -189,48 +189,48 @@ function PresentLesson() {
       </div>
       {showIncorrectMessage ? (
         <div className="answered-message">
-          <p className="incorrect" id="incorrect-message">
+          <div className="incorrect" id="incorrect-message">
             <span className="message-text">
               <BsXCircleFill className="icon" />
             </span>
             Oops! The answer is {correctAnswers[currentKataIndex]}
-          </p>
-          <p className="correct" id="incorrect-message">
-            <p id="incorrect-message">
+          </div>
+          <div className="correct" id="incorrect-message">
+            <div id="incorrect-message">
               <div className="flag-container">
                 <ES id="flag" />
               </div>
-            </p>
+            </div>
             {correctSentences[currentKataIndex]}
-          </p>
-          <p id="incorrect-message">
+          </div>
+          <div id="incorrect-message">
             <div className="flag-container">
               <GB id="flag" />
             </div>
-          </p>
+          </div>
         </div>
       ) : null}
       {showCorrectMessage ? (
         <div className="answered-message">
-          <p className="correct" id="correct-message">
+          <div className="correct" id="correct-message">
             <span className="message-text">
               <BsCheckCircleFill className="icon" />
             </span>
             Well done! The answer is {selected}
-          </p>
-          <p className="correct" id="incorrect-message">
-            <p id="incorrect-message">
+          </div>
+          <div className="correct" id="incorrect-message">
+            <div id="incorrect-message">
               <div className="flag-container">
                 <ES id="flag" />
               </div>
-            </p>
+            </div>
             {correctSentences[currentKataIndex]}
-          </p>
-          <p id="incorrect-message">
+          </div>
+          <div id="incorrect-message">
             <div className="flag-container">
               <GB id="flag" />
             </div>
-          </p>
+          </div>
         </div>
       ) : null}
     </>
