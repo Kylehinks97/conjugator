@@ -15,6 +15,8 @@ CREATE TABLE conjugations (
     verb_id INT REFERENCES verbs(id),
     subject_pronoun VARCHAR(10) NOT NULL,
     conjugated_form VARCHAR(100) NOT NULL,
-    kata VARCHAR(255) NOT NULL
+    kata VARCHAR(255) NOT NULL,
+    options VARCHAR(100) NOT NULL,
+    translation VARCHAR(255) NOT NULL
 );
 

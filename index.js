@@ -13,28 +13,31 @@ app.use(express.json());
 app.get("/new-lesson", async (req, res) => {
   try {
     const randomizedData = await pool.query(`
-            WITH RandomizedRows AS (
-                SELECT
-                    id,
-                    verb_id,
-                    subject_pronoun,
-                    conjugated_form,
-                    kata,
-                    ROW_NUMBER() OVER (PARTITION BY verb_id ORDER BY random()) AS rn
-                FROM conjugations
-            )
-            SELECT
-                id,
-                verb_id,
-                subject_pronoun,
-                conjugated_form,
-                kata
-            FROM RandomizedRows
-            WHERE rn = 1;
-        `);
+      WITH RandomizedRows AS (
+        SELECT
+          id,
+          verb_id,
+          subject_pronoun,
+          conjugated_form,
+          kata,
+          options,
+          ROW_NUMBER() OVER (PARTITION BY verb_id ORDER BY random()) AS rn
+        FROM conjugations
+      )
+      SELECT
+        id,
+        verb_id,
+        subject_pronoun,
+        conjugated_form,
+        kata,
+        options
+      FROM RandomizedRows
+      WHERE rn = 1;
+    `);
     res.json(randomizedData.rows);
   } catch (err) {
     console.error(err.message);
+    res.status(500).json({ error: "An error occurred while fetching data." });
   }
 });
 
