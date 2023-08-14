@@ -35,4 +35,15 @@
   font-weight: bolder;
   letter-spacing: .1em;
   font-size: larger;
+  background-color: var(--grey);
+  cursor: pointer /* Set your default color here */
 }
+
+.correct {
+  background-color: var(--green);
+}
+
+.incorrect {
+  background-color: var(--red);
+}
+
