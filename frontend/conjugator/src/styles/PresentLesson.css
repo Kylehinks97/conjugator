@@ -5,10 +5,14 @@
 
 :root {
   --grey: #2d2d2d;
+  --grey-trim: #5e5e5e;
+  --selected: #50505076;
   --white: #fff8f0;
-  --green: #31b404;
+  --green: #5aac3f;
+  --green-trim: #538743;
   --blue: #06aed5;
-  --red: #dd1c1a;
+  --red: #d4413e;
+  --red-trim: #a53432;
   /* Define more colors as needed */
 }
 
@@ -19,31 +23,114 @@
 
 .container {
   width: 80%;
+  margin: auto;
 }
 
 .button-wrapper {
- 
   width: 100%;
   justify-content: space-around;
 }
 
 .option-button {
-  border-radius: 5em;
+  border-radius: 0.7em;
   padding: 0.2em 1em 0.2em 1em;
-  margin: 0em 1em;
+  margin: 0.75em 0.75em 0 0;
   color: var(--white);
-  font-weight: bolder;
-  letter-spacing: .1em;
+  letter-spacing: 0.05em;
   font-size: larger;
   background-color: var(--grey);
-  cursor: pointer /* Set your default color here */
+  cursor: pointer;
+  border-top: 0.1em solid var(--grey-trim);
+  border-left: 0.1em solid var(--grey-trim);
+  border-right: 0.1em solid var(--grey-trim);
+  border-bottom: 0.3em solid var(--grey-trim);
 }
 
-.correct {
-  background-color: var(--green);
+.kata-text {
+  letter-spacing: 0.05em;
+  padding: 1em 0em;
+}
+
+.option-button:hover {
+  transform: scale(1.1);
+  transition: transform 0.2s;
 }
 
 .incorrect {
-  background-color: var(--red);
+  color: var(--red);
 }
 
+.correct {
+  color: var(--green);
+}
+
+.correct-background {
+  background-color: var(--green);
+  color: var(--grey);
+  border: 0;
+  border-bottom: 0.4em solid var(--green-trim);
+}
+
+.incorrect-background {
+  color: var(--grey);
+  background-color: var(--red);
+  border: 0;
+  border-bottom: 0.4em solid var(--red-trim);
+}
+
+.selected {
+  background-color: var(--selected);
+}
+
+.progress-button {
+  margin: 2em 0em 2em 0em;
+  letter-spacing: 0.05em;
+  width: 100%;
+  border-radius: 0.75em;
+  padding: 0.5em;
+  font-weight: 700;
+}
+
+.icon {
+  font-size: 1.5em;
+  color: var(--red) !important;
+  background-color: transparent;
+  margin-right: .3em;
+}
+
+#incorrect-message,
+#correct-message {
+  display: flex;
+  align-items: center;
+  background-color: transparent;
+  padding: .3em 0
+}
+
+#flag {
+  width: 100%;
+  height: auto;
+  transform: scale(1.6)
+}
+
+.flag-container {
+  display: flex;
+  width: 1.5em;
+  height: 1.5em;
+  border-radius: 5em;
+  overflow: hidden;
+  margin-right: .5em;
+  border: none;
+}
+
+.message-text {
+  display: flex;
+  background-color: transparent;
+  white-space: nowrap;
+}
+
+.answered-message {
+  padding: 1.5em;
+  border-radius: 1em;
+  background-color: #212121;
+  border-bottom: 0.4em solid #1d1d1d;
+}

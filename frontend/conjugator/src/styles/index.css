@@ -4,7 +4,9 @@
 @import "tailwindcss/utilities";
 
 * {
-  font-family: Poppins;
+  font-family: Libre Franklin;
+  margin: 0;
+  padding: 0
 }
 
 /* Your custom styles */
